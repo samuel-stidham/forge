@@ -58,6 +58,8 @@ Include all of the following, regardless of language or type.
 
 ## Process
 
+Follow the `token-budget` skill in this plugin for session management. `/forge:scaffold` generates many files and will exceed 30 tool calls for most project types; check in with the user after completing each major layer before moving to the next. Commit each layer as it is finished. Default to Opus for this command.
+
 1. State the language, the project type, any flags used, and the file tree you are about to create. Keep this brief. It is not a full design document.
 2. Create the files for real. Write working code, working config, and working CI. Do not write stubs.
 3. After scaffolding, run the project's own test and lint commands, using the Makefile targets you just created. When `--infra opentofu` was used, also run `tofu validate` against the generated configs. Confirm everything actually works before you report success. If something fails, fix it. Do not report a scaffold as done with a known-broken build.

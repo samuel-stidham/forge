@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.0
+
+Add token budget management for Max 5x plan.
+
+### Added
+
+- `token-budget` skill: session management rules for working within Claude
+  Code rate limits. Covers batch sizing, commit frequency, graceful stopping,
+  resume paths, and model selection.
+
+### Changed
+
+- All commands now reference the `token-budget` skill for session management.
+- Model selection defaults to Opus for all coding and writing tasks. Sonnet
+  is reserved for lightweight, mechanical operations only.
+
 ## v0.1.2
 
 Fix the version command missing plugin.json on every release.

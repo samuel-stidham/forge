@@ -33,4 +33,4 @@ If you are adding or editing a command, and you notice an instruction that only 
 
 ### Editing the skills
 
-`skills/clean-architecture/SKILL.md`, `skills/conventional-commits/SKILL.md`, and `skills/writing-style/SKILL.md` are shared references for the commands. Each one is the single source of truth for its topic. Don't duplicate architecture rules, commit format rules, or writing rules inside the command files. Reference the matching skill instead.
+`skills/clean-architecture/SKILL.md`, `skills/conventional-commits/SKILL.md`, `skills/writing-style/SKILL.md`, and `skills/token-budget/SKILL.md` are shared references for the commands. Each one is the single source of truth for its topic. Don't duplicate architecture rules, commit format rules, writing rules, or token management rules inside the command files. Reference the matching skill instead.

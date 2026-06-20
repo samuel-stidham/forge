@@ -24,6 +24,8 @@ Determine the current version. Check these sources in this order, and use the fi
 
 ## Workflow
 
+Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+
 1. Report the current version and the new version the requested bump will produce. Ask the user to confirm before proceeding. Do not tag without confirmation.
 2. Update `VERSION.md` with the new version string, as a single line.
 3. Update `.claude-plugin/plugin.json` if it exists, even if this project is forge itself. Set its `version` field to the new version string. This field gates whether `claude plugin update` can see new releases, so it must never fall behind `VERSION.md`.

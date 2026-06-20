@@ -7,6 +7,8 @@ argument-hint: "[optional base branch, defaults to main/master]"
 
 You are auditing the changes on the current branch against its base branch. This is a diff review, not a full-repo audit. Scope your attention to what actually changed. Also include enough surrounding context to judge whether it fits.
 
+Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+
 ## Setup
 
 1. Determine the base branch. Use `$ARGUMENTS` if given. Otherwise, detect the repo's default branch by checking for `main`, then `master`, then whatever `git symbolic-ref refs/remotes/origin/HEAD` reports. Do not assume `main` blindly.

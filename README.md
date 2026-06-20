@@ -128,6 +128,10 @@ This is a reference skill. It defines the commit subject format, the allowed com
 
 This is a reference skill. It defines the writing rules for any prose forge generates, such as README content, PR descriptions, and commit bodies. Every command that writes prose follows it, so output stays consistent across the plugin.
 
+### `token-budget`
+
+This is a reference skill. It defines how every forge command manages token usage within Claude Code's rolling rate limits. It covers batch sizing, commit frequency, graceful stopping when limits approach, resume path formatting, and model selection. All commands follow it for session management. Opus is the default for coding and writing tasks. Sonnet is reserved for lightweight, mechanical operations only.
+
 ## Commit Conventions
 
 Every commit and PR title forge generates follows the `conventional-commits` skill. Subjects use the format `{type}({scope}): {description}`, with `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `style`, and `perf` as the allowed types. Subjects stay lowercase, skip the trailing period, and use the imperative mood, for example `feat(auth): add JWT middleware`.

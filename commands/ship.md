@@ -9,6 +9,8 @@ You are taking the current branch's committed work and getting it into a draft P
 
 Additional context for the PR body, if any: $ARGUMENTS
 
+Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+
 ## Pre-flight checks
 
 Run these before touching the remote. If any fail, stop and report the problem instead of forcing past it.

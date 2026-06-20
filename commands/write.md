@@ -36,6 +36,8 @@ Create a branch following the same convention as `/forge:do-work`. Use `feat` fo
 
 Write the content. Follow the `writing-style` skill in this plugin for the prose. Match the voice and conventions you found during orientation. Produce real, complete prose. Do not leave placeholder paragraphs or notes like "TODO: expand this section."
 
+Follow the `token-budget` skill in this plugin for session management. Complete one section or scene fully before starting the next. Stop gracefully with a resume path if token limits are reached. Default to Opus for this command.
+
 ### 4. Commit
 
 Commit using the `conventional-commits` skill in this plugin. Scope each commit logically. For example, commit one section or one scene at a time, instead of one giant commit for an entire chapter.

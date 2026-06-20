@@ -44,6 +44,8 @@ Write the real implementation. Do not leave placeholder stubs or `TODO` comments
 
 Commit as you go. Follow the `conventional-commits` skill in this plugin for the subject, body, and footer format. Keep commits small and logically scoped, instead of one giant commit at the end.
 
+Follow the `token-budget` skill in this plugin for session management. Work in small batches, commit after each logical step, and stop gracefully with a resume path if token limits are reached. Default to Opus for this command.
+
 ### 6. Test and lint
 
 Run the project's existing test suite and linter using whatever tooling the codebase already has. Do not introduce a new test framework or linter. If tests fail, fix the underlying issue, or your code, instead of weakening or deleting the test. If the test itself is provably wrong, explain why before you change it. If no test tooling exists in the repo, say so plainly instead of inventing a fake passing result.

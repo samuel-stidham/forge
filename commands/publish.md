@@ -30,6 +30,8 @@ Before building anything, read the repo to understand the manuscript structure.
 
 ## Workflow
 
+Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+
 1. Read the manuscript files in order. Assemble them into a single logical document, following the chapter ordering found during orientation.
 2. Apply basic typographic formatting. This includes chapter headings, paragraph spacing, and italics and bold preserved from the markdown source. It also includes proper front and back matter placement.
 3. Generate the EPUB file, using Pandoc or a similar tool available in the environment. Embed the cover image if one exists. Include metadata such as title, author, language, and description.
