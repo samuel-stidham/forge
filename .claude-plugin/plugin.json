@@ -1,0 +1,19 @@
+{
+  "name": "forge",
+  "displayName": "Forge",
+  "description": "A lean, repo-agnostic engineering workflow plugin. Scaffolds Clean Architecture projects, executes development tasks, reviews changes, and ships PRs.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Samuel Stidham"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/samuel-stidham/forge",
+  "repository": "https://github.com/samuel-stidham/forge",
+  "keywords": [
+    "clean-architecture",
+    "workflow",
+    "scaffolding",
+    "code-review",
+    "pull-requests"
+  ]
+}
