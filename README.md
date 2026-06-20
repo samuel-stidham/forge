@@ -65,6 +65,32 @@ It ends with exactly one verdict. The verdict is **SHIP IT**, **NEEDS WORK** wit
 
 Add `--infra opentofu` to also generate cloud infrastructure as code. This adds an `infra/` directory with OpenTofu configs for networking, compute, a database when needed, and secrets management. `--provider` is required with `--infra`, and accepts `aws`, `gcp`, or `digitalocean`. The generated HCL files work with both the `opentofu` and `terraform` binaries.
 
+### `/forge:write`
+
+`/forge:write` writes long-form prose for a writing project in this repo. It works for fiction, nonfiction, essays, worldbuilding documents, and similar projects. It adapts to whatever voice, tone, and structure the repo already has. It orients itself by reading existing content and any project guidance files before writing anything.
+
+**It stops before pushing.** It never pushes or opens a PR. Run `/forge:ship` for that.
+
+```
+/forge:write chapter 3: the city falls and the survivors regroup at the harbor
+/forge:write section on the historical context of Markan priority
+/forge:write revise the opening scene to establish the weather before the dialogue
+/forge:write add the appendix covering common counterarguments
+```
+
+### `/forge:publish`
+
+`/forge:publish` compiles a writing project into publishable ebook formats. It is the prose equivalent of `/forge:ship`. It targets Amazon KDP and Barnes and Noble Nook, and builds EPUB files with the right metadata, formatting, and structure for each. It does not upload anything. Uploading, pricing, and platform forms stay a manual step for the user.
+
+This command needs [Pandoc](https://pandoc.org/installing.html) installed on your machine to generate EPUB files.
+
+```
+/forge:publish
+/forge:publish kindle
+/forge:publish nook
+/forge:publish epub
+```
+
 ## Skills
 
 ### `clean-architecture`
