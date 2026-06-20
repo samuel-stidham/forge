@@ -26,12 +26,13 @@ Determine the current version. Check these sources in this order, and use the fi
 
 1. Report the current version and the new version the requested bump will produce. Ask the user to confirm before proceeding. Do not tag without confirmation.
 2. Update `VERSION.md` with the new version string, as a single line.
-3. Update version references in manifest files, if they exist. Check `package.json`, `Cargo.toml`, `pyproject.toml`, `composer.json`, and `.claude-plugin/plugin.json`. Do not search and replace the version string across the entire repo. Only update known manifest files and version-specific locations.
-4. Update `CHANGELOG.md`. Add a new section at the top, below the `# Changelog` heading. Populate it with commit subjects since the last tag, grouped by commit type from the `conventional-commits` skill. Follow the same format as the existing entries.
-5. Commit the version bump, the changelog update, and any manifest changes, together. Follow the `conventional-commits` skill. Use `chore(release): v{version}` as the commit message.
-6. Create an annotated Git tag. Use `v{version}` as the tag name. The tag message is `v{version}`, followed by a blank line. After that, add a brief summary of what changed, pulled from the changelog.
-7. Push the tag, using `git push origin v{version}`. Also push the commit from step 5.
-8. Report the new version, the tag name, and the tag's remote URL. Follow the `writing-style` skill for the report's prose. If this project has CI that triggers on tags, remind the user to check that it ran successfully.
+3. Update `.claude-plugin/plugin.json` if it exists, even if this project is forge itself. Set its `version` field to the new version string. This field gates whether `claude plugin update` can see new releases, so it must never fall behind `VERSION.md`.
+4. Update version references in other manifest files, if they exist. Check `package.json`, `Cargo.toml`, `pyproject.toml`, and `composer.json`. Do not search and replace the version string across the entire repo. Only update known manifest files and version-specific locations.
+5. Update `CHANGELOG.md`. Add a new section at the top, below the `# Changelog` heading. Populate it with commit subjects since the last tag, grouped by commit type from the `conventional-commits` skill. Follow the same format as the existing entries.
+6. Commit the version bump, the changelog update, and any manifest changes, together. Follow the `conventional-commits` skill. Use `chore(release): v{version}` as the commit message.
+7. Create an annotated Git tag. Use `v{version}` as the tag name. The tag message is `v{version}`, followed by a blank line. After that, add a brief summary of what changed, pulled from the changelog.
+8. Push the tag, using `git push origin v{version}`. Also push the commit from step 6.
+9. Report the new version, the tag name, and the tag's remote URL. Follow the `writing-style` skill for the report's prose. If this project has CI that triggers on tags, remind the user to check that it ran successfully.
 
 ## What this command does not do
 

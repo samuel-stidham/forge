@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.2
+
+Fix the version command missing plugin.json on every release.
+
+### Fixed
+
+- `.claude-plugin/plugin.json`: was stuck at `0.1.0` after the v0.1.1
+  release. `/forge:version` now updates it explicitly every release,
+  instead of relying on the generic manifest list.
+
+### Added
+
+- README: a new "Upgrading" section documenting `claude plugin update`
+  and `claude plugin list`.
+
 ## v0.1.1
 
 Add the version command and release tracking files.

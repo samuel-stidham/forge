@@ -2,7 +2,7 @@
   "name": "forge",
   "displayName": "Forge",
   "description": "A lean, repo-agnostic engineering workflow plugin. Scaffolds Clean Architecture projects, executes development tasks, reviews changes, and ships PRs.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": {
     "name": "Samuel Stidham"
   },

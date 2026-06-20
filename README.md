@@ -12,6 +12,16 @@ claude plugin add samuel-stidham/forge
 
 That's it. There are no config files and no setup step. forge reads what it needs from whatever repo you're in.
 
+## Upgrading
+
+Run this command to upgrade forge to the latest published version.
+
+```
+claude plugin update forge@samuel-stidham/forge
+```
+
+forge pins an explicit version in `.claude-plugin/plugin.json`. Updates only land after a `/forge:version` release bumps that field. Check your installed version at any time with `claude plugin list`.
+
 ## Commands
 
 All commands live under the `/forge:` namespace.
