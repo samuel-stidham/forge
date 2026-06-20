@@ -91,6 +91,19 @@ This command needs [Pandoc](https://pandoc.org/installing.html) installed on you
 /forge:publish epub
 ```
 
+### `/forge:version`
+
+`/forge:version` cuts a release. It determines the current version, bumps it, updates `VERSION.md` and `CHANGELOG.md`, and creates an annotated Git tag. It works for code projects, writing projects, and the forge plugin itself. It always asks you to confirm the new version before it tags anything.
+
+It pushes the tag it creates, but it does not push branches or open PRs. CI pipelines can trigger on the tag to automate publishing or deployment.
+
+```
+/forge:version patch
+/forge:version minor
+/forge:version major
+/forge:version 2.0.0
+```
+
 ## Skills
 
 ### `clean-architecture`
