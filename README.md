@@ -7,7 +7,8 @@ forge makes no assumptions about language, framework, or tooling. Every command 
 ## Installation
 
 ```
-claude plugin add samuel-stidham/forge
+/plugin marketplace add samuel-stidham/forge
+/plugin install forge@forge-marketplace
 ```
 
 That's it. There are no config files and no setup step. forge reads what it needs from whatever repo you're in.
@@ -17,7 +18,7 @@ That's it. There are no config files and no setup step. forge reads what it need
 Run this command to upgrade forge to the latest published version.
 
 ```
-claude plugin update forge@samuel-stidham/forge
+/plugin install forge@forge-marketplace
 ```
 
 forge pins an explicit version in `.claude-plugin/plugin.json`. Updates only land after a `/forge:version` release bumps that field. Check your installed version at any time with `claude plugin list`.
