@@ -1,8 +1,15 @@
 {
+  "name": "forge-marketplace",
+  "owner": {
+    "name": "Samuel Stidham",
+    "email": "dqfan2012@gmail.com"
+  },
+  "description": "A lean, repo-agnostic Claude Code plugin for engineering workflows.",
   "plugins": [
     {
       "name": "forge",
-      "path": "."
+      "source": ".",
+      "description": "Scaffold projects, execute dev tasks, review changes, ship PRs, write prose, publish ebooks, and manage versions."
     }
   ]
 }
