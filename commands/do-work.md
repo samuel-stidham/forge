@@ -42,6 +42,8 @@ Check the current branch first. If there are uncommitted changes that are not yo
 
 Write the real implementation. Do not leave placeholder stubs or `TODO` comments standing in for logic that was asked for. Follow the codebase's existing patterns and its dependency conventions. If the project follows Clean Architecture layering, respect it. See the `clean-architecture` skill in this plugin for the underlying rules if you need a refresher.
 
+Inside each layer, follow the `clean-code` skill in this plugin for code-level quality, covering magic values, cognitive complexity, naming, error handling, and the like. The `clean-architecture` skill covers the layers; the `clean-code` skill covers what happens inside them.
+
 Commit as you go. Follow the `conventional-commits` skill in this plugin for the subject, body, and footer format. Keep commits small and logically scoped, instead of one giant commit at the end.
 
 Follow the `token-budget` skill in this plugin for session management. Work in small batches, commit after each logical step, and stop gracefully with a resume path if token limits are reached. Default to Opus for this command.

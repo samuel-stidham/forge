@@ -121,6 +121,10 @@ It pushes the tag it creates, but it does not push branches or open PRs. CI pipe
 
 This is a reference skill. It defines Clean Architecture's layer responsibilities, the inward dependency rule, naming conventions, and a testing strategy for each layer. `/forge:scaffold` uses it to generate projects with correct layers. `/forge:review` uses it to spot real layer violations instead of guessing.
 
+### `clean-code`
+
+This is a reference skill. It defines code-level quality rules that apply inside any layer, in any language. It covers magic values, cognitive complexity, guard clauses, naming, single responsibility, locality, tempered DRY, parameter count, error handling, and comments. `/forge:do-work` follows it while implementing, and `/forge:review` uses it to judge code quality. Where `clean-architecture` governs the layers, `clean-code` governs what happens inside them.
+
 ### `conventional-commits`
 
 This is a reference skill. It defines the commit subject format, the allowed commit types, and the body and footer rules. `/forge:do-work` and `/forge:ship` both follow it for every commit and every PR title they create.
@@ -157,4 +161,4 @@ MIT. See [LICENSE](LICENSE) for the full text.
 
 Forge took inspiration from [Shipyard](https://github.com/mattsears18/shipyard), an autonomous engineering loop plugin for Claude Code. Shipyard is a far more ambitious project. It handles parallel worker pools in isolated git worktrees. It also handles autonomous issue triage, audit pipelines, cost tracking, and PRs that merge automatically through CI.
 
-We built forge because we needed something leaner. It has four commands, no orchestrator, and no concurrency management. It is just a clean workflow that gets out of your way. If our needs grow to require parallel agents, automated backlog triage, or worktree isolation, we will adopt Shipyard. We will not rebuild those features ourselves. Different tools fit different stages.
+We built forge because we needed something leaner. It is just its commands, with no orchestrator and no concurrency management. It is just a clean workflow that gets out of your way. If our needs grow to require parallel agents, automated backlog triage, or worktree isolation, we will adopt Shipyard. We will not rebuild those features ourselves. Different tools fit different stages.

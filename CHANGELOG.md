@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.1
+
+Add clean-code skill and update documentation to reflect current plugin state.
+
+### Added
+
+- `clean-code` skill: code-level quality rules covering magic values,
+  cognitive complexity, guard clauses, naming, single responsibility,
+  locality, tempered DRY, parameter count, error handling, and comments.
+
+### Changed
+
+- All commands now reference the `clean-code` skill where relevant.
+- README and CLAUDE.md updated to reflect the full set of commands and skills.
+
 ## v0.2.0
 
 Add token budget management for Max 5x plan.
