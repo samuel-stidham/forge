@@ -11,17 +11,27 @@ forge makes no assumptions about language, framework, or tooling. Every command 
 /plugin install forge@forge-marketplace
 ```
 
-That's it. There are no config files and no setup step. forge reads what it needs from whatever repo you're in.
+Select "Install for you (user scope)" to make forge available in every repo on that machine.
 
-## Upgrading
+## Updating
 
-Run this command to upgrade forge to the latest published version.
+After a new version is pushed to GitHub, refresh the marketplace and update the plugin.
 
 ```
+/plugin marketplace update forge-marketplace
+```
+
+Then open the `/plugin` menu, go to Installed, find forge, and select update.
+
+If the update does not appear, uninstall and reinstall.
+
+```
+/plugin uninstall forge@forge-marketplace
+/plugin marketplace update forge-marketplace
 /plugin install forge@forge-marketplace
 ```
 
-forge pins an explicit version in `.claude-plugin/plugin.json`. Updates only land after a `/forge:version` release bumps that field. Check your installed version at any time with `claude plugin list`.
+Restart Claude Code after updating for changes to take effect.
 
 ## Commands
 
