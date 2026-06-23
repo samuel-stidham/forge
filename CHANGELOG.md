@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.0
+
+Add test harness command for MCP-based automated QA.
+
+### Added
+
+- `/forge:test-harness`: generates an MCP server that exposes the
+  project's domain and application layers as tools Claude can call
+  for headless testing and QA.
+
 ## v0.2.1
 
 Add clean-code skill and update documentation to reflect current plugin state.

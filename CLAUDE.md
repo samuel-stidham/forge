@@ -11,14 +11,14 @@ This repo *is* the plugin. There is no separate build step. Editing a file under
 Claude Code reads plugin commands and skills from disk at session start, and again on plugin reload. To test a change, follow these steps.
 
 1. If forge is installed locally, through a local path or `claude plugin add`, reload the plugin. This applies when it points at this checked-out repo. Restart the Claude Code session, or use whatever reload mechanism the current version exposes for plugin development. This makes sure the edited `.md` files are picked up.
-2. Invoke the changed command, `/forge:do-work`, `/forge:review`, `/forge:ship`, `/forge:scaffold`, `/forge:write`, `/forge:publish`, or `/forge:version`, in a real or scratch repo. Check that the behavior matches the instructions in the file.
-3. For a skill under `skills/`, test it through the commands that reference it. `clean-architecture` backs `/forge:scaffold` and `/forge:review`. `clean-code` backs `/forge:do-work` and `/forge:review`. `conventional-commits` backs `/forge:do-work`, `/forge:ship`, and `/forge:version`. `writing-style` backs any command that writes prose. Confirm the skill's guidance is actually applied.
+2. Invoke the changed command, `/forge:do-work`, `/forge:review`, `/forge:ship`, `/forge:scaffold`, `/forge:test-harness`, `/forge:write`, `/forge:publish`, or `/forge:version`, in a real or scratch repo. Check that the behavior matches the instructions in the file.
+3. For a skill under `skills/`, test it through the commands that reference it. `clean-architecture` backs `/forge:scaffold`, `/forge:test-harness`, and `/forge:review`. `clean-code` backs `/forge:do-work` and `/forge:review`. `conventional-commits` backs `/forge:do-work`, `/forge:ship`, and `/forge:version`. `writing-style` backs any command that writes prose. Confirm the skill's guidance is actually applied.
 
 There is no automated test suite for the plugin's own behavior. These are prompt files. Testing means running them against real scenarios and checking that the output makes sense.
 
 ### Command naming convention
 
-All commands live under the `/forge:` namespace. That includes `/forge:do-work`, `/forge:review`, `/forge:ship`, `/forge:scaffold`, `/forge:write`, `/forge:publish`, and `/forge:version`. The namespace comes from the plugin name, `forge`, set in `.claude-plugin/plugin.json`, plus the filename under `commands/`. Don't rename a command file without updating every reference to it. Check the README, the other command files, and this file.
+All commands live under the `/forge:` namespace. That includes `/forge:do-work`, `/forge:review`, `/forge:ship`, `/forge:scaffold`, `/forge:test-harness`, `/forge:write`, `/forge:publish`, and `/forge:version`. The namespace comes from the plugin name, `forge`, set in `.claude-plugin/plugin.json`, plus the filename under `commands/`. Don't rename a command file without updating every reference to it. Check the README, the other command files, and this file.
 
 ### Repo-agnostic by design
 

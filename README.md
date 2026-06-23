@@ -86,6 +86,19 @@ It ends with exactly one verdict. The verdict is **SHIP IT**, **NEEDS WORK** wit
 
 Add `--infra opentofu` to also generate cloud infrastructure as code. This adds an `infra/` directory with OpenTofu configs for networking, compute, a database when needed, and secrets management. `--provider` is required with `--infra`, and accepts `aws`, `gcp`, or `digitalocean`. The generated HCL files work with both the `opentofu` and `terraform` binaries.
 
+### `/forge:test-harness`
+
+`/forge:test-harness` generates an MCP server for headless testing. It reads the project's domain and application layers, finds the public API surface, and exposes it as MCP tools Claude can call. With the harness connected, Claude can launch the application, send inputs, read state, and find bugs without manual QA. It generates lifecycle, action, inspection, and targeted testing tools, wires up an MCP entry in `.claude/settings.json`, and writes a `TEST_PLAN.md` checklist to follow.
+
+It produces the harness only. It does not run the QA pass. That is a separate task you start after the harness is connected.
+
+```
+/forge:test-harness
+/forge:test-harness focus on the game trait and input handling
+/forge:test-harness cover the REST API endpoints
+/forge:test-harness expose the job queue and worker lifecycle
+```
+
 ### `/forge:write`
 
 `/forge:write` writes long-form prose for a writing project in this repo. It works for fiction, nonfiction, essays, worldbuilding documents, and similar projects. It adapts to whatever voice, tone, and structure the repo already has. It orients itself by reading existing content and any project guidance files before writing anything.
