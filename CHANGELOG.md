@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.4.0
 
 Add a deploy command, an infrastructure-as-code skill, and a web-app scaffold type.
 
