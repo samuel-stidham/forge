@@ -7,11 +7,11 @@ argument-hint: "{language} {project-type} [--infra opentofu --provider aws|gcp|d
 
 You are generating a complete, real, working Clean Architecture project from scratch in the current directory. Use a new subdirectory instead if the current directory is non-empty and the user confirms. This is not a documentation exercise. Every file you create must compile, run, and pass as written. Do not leave placeholder comments standing in for logic, such as `// TODO: implement this`.
 
-Before writing any code, use the `clean-architecture` skill bundled with this plugin. It defines the layering rules, dependency direction, and naming conventions to apply. Do not improvise a different architecture.
+Before writing any code, use the `clean-architecture` skill bundled with this plugin. It defines the layering rules, dependency direction, and naming conventions to apply. Do not improvise a different architecture. The `web-app` type is the exception. Follow the web framework's own conventions there, as that project type explains. When the user passes `--infra`, also use the `infrastructure-as-code` skill, which is the source of truth for OpenTofu.
 
 ## Parsing $ARGUMENTS
 
-`$ARGUMENTS` is `{language} {project-type}`, with two optional flags. The flags are `--infra opentofu` and `--provider {name}`. Examples include `go rest-api`, `typescript webhook-gateway`, `python cli-tool`, and `go rest-api --infra opentofu --provider aws`.
+`$ARGUMENTS` is `{language} {project-type}`, with two optional flags. The flags are `--infra opentofu` and `--provider {name}`. Examples include `go rest-api`, `typescript webhook-gateway`, `python cli-tool`, `php web-app`, and `go rest-api --infra opentofu --provider aws`.
 
 - If either the language or the project type is missing or ambiguous, ask the user to clarify. Do not guess a language or a type.
 - **Supported project types:**
@@ -20,6 +20,7 @@ Before writing any code, use the `clean-architecture` skill bundled with this pl
   - `background-worker`: a queue or event consumer that processes jobs asynchronously.
   - `webhook-gateway`: receives external webhooks, validates and verifies them, and dispatches to internal handlers.
   - `task-runner`: schedules and executes recurring or one-off tasks and jobs.
+  - `web-app`: a server-rendered web application with pages, routing, and templates. Follow the framework's own conventions, such as Laravel MVC, Rails, Django, or Next.js. Do not force the four-layer split onto it.
 - Language is not limited to a fixed list. Use whatever the user names, and apply that language's real idioms and tooling. This means its actual package manager, test framework, and conventional project layout, not a generic templated approximation.
 - `--infra` and `--provider` are optional flags. See `Infrastructure with --infra` below for how to parse and apply them.
 
@@ -27,13 +28,13 @@ Before writing any code, use the `clean-architecture` skill bundled with this pl
 
 This flag is optional. Without it, generate no infrastructure code. The flag is opt-in.
 
-When the user passes `--infra opentofu`, the generated project also gets an `infra/` directory. This is separate from the `infrastructure/` layer described above. The `infra/` directory holds `main.tf`, `variables.tf`, `outputs.tf`, `providers.tf`, and `terraform.tfvars.example`. It also holds a `modules/` directory with `networking/`, `database/`, `container/`, and `secrets/` subdirectories.
+When the user passes `--infra opentofu`, follow the `infrastructure-as-code` skill bundled with this plugin. It is the source of truth for the `infra/` directory layout, the module set, provider abstraction, remote state, the plan-before-apply discipline, and secrets handling. Do not restate or improvise those rules here.
 
 `--provider` is required whenever `--infra` is used. Accept `aws`, `gcp`, or `digitalocean`. If the user names a different provider, ask them to pick one of these three instead of guessing.
 
-The only accepted value for `--infra` is `opentofu`. If the user passes `--infra terraform`, explain that forge uses OpenTofu only. OpenTofu is the open source fork of Terraform. Note that the generated HCL files still work with both the `opentofu` and `terraform` binaries.
+The only accepted value for `--infra` is `opentofu`. If the user passes `--infra terraform`, explain that forge uses OpenTofu only.
 
-The generated configs connect to the Dockerfile the scaffold already creates. They set up the minimum infrastructure the project type needs. This includes networking, such as a VPC and subnets. It includes compute, through a container service or a VM. It includes a database, when the project type requires one. It also includes secrets management. Add a deploy stage to the GitHub Actions CI pipeline from the file list below.
+Generate the minimum infrastructure the project actually needs. Always wire the generated `infra/` to the Dockerfile the scaffold creates. Include the optional `cache` or `search` module only when the app declares it, as the skill explains. Add a deploy stage to the GitHub Actions CI pipeline from the file list below.
 
 ## What every generated project must include
 
@@ -45,6 +46,7 @@ Include all of the following, regardless of language or type.
    - `infrastructure/`: concrete adapters that implement application ports, such as a database, a message queue, or an HTTP client.
    - `presentation/`, or `cmd/`/`interfaces/` if more idiomatic for the language: the entry point that wires everything together as the composition root. It exposes the project type's interface, such as HTTP handlers, CLI commands, or a consumer loop.
    - Use whatever directory names are idiomatic for the language's ecosystem, while keeping these four responsibilities. Do not force a Go-style layout onto a Rails or Rails-adjacent project if it fights the framework.
+   - For the `web-app` type, follow the framework's own layout instead of the four-layer split. Keep business logic out of controllers and templates. Do not invent a `domain/` or `application/` tree the framework does not expect.
 2. **Dockerfile**: a multi-stage build. The final stage runs as a non-root user and only ships the runtime artifact. Keep the build toolchain out of the final image.
 3. **docker-compose.yml**: runs the service plus any dependency it actually needs, such as a database or queue for a `rest-api` or `background-worker`. Use sane defaults and no hardcoded secrets.
 4. **Makefile**: at minimum, `build`, `run`, `test`, `lint`, and `docker-build` targets, using the language's real toolchain commands.

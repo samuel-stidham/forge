@@ -9,7 +9,7 @@
     {
       "name": "forge",
       "source": ".",
-      "description": "Scaffold projects, execute dev tasks, review changes, ship PRs, write prose, publish ebooks, and manage versions."
+      "description": "Scaffold projects, execute dev tasks, review changes, ship PRs, deploy with OpenTofu, write prose, publish ebooks, and manage versions."
     }
   ]
 }

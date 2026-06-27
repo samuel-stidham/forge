@@ -1,6 +1,6 @@
 # forge
 
-forge is a lean, repo-agnostic engineering workflow plugin for [Claude Code](https://claude.com/claude-code). It scaffolds Clean Architecture projects, executes development tasks, reviews changes, and ships pull requests. It works the same way in a large company monorepo or a personal side project.
+forge is a lean, repo-agnostic engineering workflow plugin for [Claude Code](https://claude.com/claude-code). It scaffolds Clean Architecture projects, executes development tasks, reviews changes, ships pull requests, and deploys with OpenTofu. It works the same way in a large company monorepo or a personal side project.
 
 forge makes no assumptions about language, framework, or tooling. Every command detects what it needs from the repo itself. It looks at manifest files, lockfiles, and existing patterns, plus `CLAUDE.md` and `README.md`. It never requires per-repo configuration.
 
@@ -79,12 +79,26 @@ It ends with exactly one verdict. The verdict is **SHIP IT**, **NEEDS WORK** wit
 /forge:scaffold python background-worker
 /forge:scaffold rust cli-tool
 /forge:scaffold java task-runner
+/forge:scaffold php web-app
 /forge:scaffold go rest-api --infra opentofu --provider aws
+/forge:scaffold php web-app --infra opentofu --provider digitalocean
 ```
 
-**Supported project types:** `rest-api`, `cli-tool`, `background-worker`, `webhook-gateway`, and `task-runner`. Each one is available in any language you ask for, using that language's real idioms and tools.
+**Supported project types:** `rest-api`, `cli-tool`, `background-worker`, `webhook-gateway`, `task-runner`, and `web-app`. Each one is available in any language you ask for, using that language's real idioms and tools. The `web-app` type follows the web framework's own conventions, such as Laravel MVC or Rails, instead of the four-layer split.
 
-Add `--infra opentofu` to also generate cloud infrastructure as code. This adds an `infra/` directory with OpenTofu configs for networking, compute, a database when needed, and secrets management. `--provider` is required with `--infra`, and accepts `aws`, `gcp`, or `digitalocean`. The generated HCL files work with both the `opentofu` and `terraform` binaries.
+Add `--infra opentofu` to also generate cloud infrastructure as code. This adds an `infra/` directory with OpenTofu configs for networking, compute, a database when needed, and secrets management. It also adds optional `cache` and `search` modules when the app declares them, with Redis and Meilisearch as the defaults. `--provider` is required with `--infra`, and accepts `aws`, `gcp`, or `digitalocean`. The generated HCL files work with both the `opentofu` and `terraform` binaries. Run `/forge:deploy` afterward to apply it.
+
+### `/forge:deploy`
+
+`/forge:deploy` deploys a project using infrastructure that already exists in the repo. It is the verb that follows `/forge:scaffold --infra`. Scaffold writes the infrastructure, and deploy applies it. It detects what is there, an `infra/` OpenTofu directory, a Dockerfile, and the app's release steps, then deploys without assuming any cloud or pipeline.
+
+It follows a strict plan-before-apply discipline. It runs `tofu fmt`, `validate`, and `plan`, shows you the plan, and applies only after you confirm. It never runs `tofu destroy` and never prints secret values. It builds and pushes the container image when the project ships one. It runs release steps like migrations only when the project defines them, then verifies and reports.
+
+```
+/forge:deploy
+/forge:deploy staging
+/forge:deploy production
+```
 
 ### `/forge:test-harness`
 
@@ -147,6 +161,10 @@ This is a reference skill. It defines Clean Architecture's layer responsibilitie
 ### `clean-code`
 
 This is a reference skill. It defines code-level quality rules that apply inside any layer, in any language. It covers magic values, cognitive complexity, guard clauses, naming, single responsibility, locality, tempered DRY, parameter count, error handling, and comments. `/forge:do-work` follows it while implementing, and `/forge:review` uses it to judge code quality. Where `clean-architecture` governs the layers, `clean-code` governs what happens inside them.
+
+### `infrastructure-as-code`
+
+This is a reference skill. It defines how forge writes and applies OpenTofu. It covers the `infra/` directory layout, modules named by role, provider abstraction across `aws`, `gcp`, and `digitalocean`, remote state, the plan-before-apply discipline, and secrets handling. `/forge:scaffold` uses it to generate the `infra/` directory, and `/forge:deploy` uses it to apply that infrastructure safely.
 
 ### `conventional-commits`
 

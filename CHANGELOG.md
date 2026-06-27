@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased
+
+Add a deploy command, an infrastructure-as-code skill, and a web-app scaffold type.
+
+### Added
+
+- `/forge:deploy`: deploys a project using its own infrastructure. Detects an
+  `infra/` OpenTofu directory, a Dockerfile, and the app's release steps, then
+  applies them with a plan-before-apply discipline.
+- `infrastructure-as-code` skill: the shared source of truth for OpenTofu. Covers
+  the `infra/` layout, modules by role, provider abstraction, remote state,
+  plan-before-apply, and secrets handling.
+- `web-app` scaffold type: a server-rendered web application that follows the web
+  framework's own conventions instead of the four-layer split.
+- Optional `cache` and `search` infrastructure modules, opt-in and detection-driven,
+  with Redis and Meilisearch as their default implementations.
+
+### Changed
+
+- `/forge:scaffold` now references the `infrastructure-as-code` skill for all
+  OpenTofu rules instead of restating them inline.
+
 ## v0.3.0
 
 Add test harness command for MCP-based automated QA.
