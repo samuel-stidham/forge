@@ -1,10 +1,15 @@
-# token-budget
+---
+name: token-budget
+description: Session-management rules for long-running forge commands. Work in small committed batches, stop gracefully when rate limits approach, and always leave a resume path.
+---
+
+# Token Budget
 
 This skill defines how forge commands manage token usage to avoid hitting Claude Code's rate limits. Every long-running command must follow these rules.
 
 ## Context
 
-Claude Code on the Max 5x plan provides approximately 88,000 to 176,000 tokens per 5-hour rolling window. These numbers are approximate and shift over time. The Max plan also removes peak-hour throttling. The plugin cannot query remaining tokens directly. Commands must still be conservative and break work into small, completable units. A larger budget does not mean careless usage.
+Claude Code enforces rolling rate limits. The exact budget varies by plan and shifts over time, and the plugin cannot query it. Commands must be conservative and break work into small, completable units. A larger budget does not mean careless usage.
 
 ## Rules for all commands
 
@@ -37,11 +42,3 @@ test.
 ```
 
 This lets the user copy that line into a new session and pick up where the work stopped.
-
-### Model selection
-
-The Max 5x plan includes access to both Sonnet and Opus. Default to Opus for all coding tasks. This includes `/forge:do-work`, `/forge:review`, `/forge:scaffold`, and `/forge:ship`. Opus produces more accurate code with fewer errors and stronger reasoning about architecture and edge cases. The token cost is higher, but the reduced need for corrections and re-runs makes it worthwhile.
-
-Use Sonnet only for lightweight tasks where Opus would be overkill. This includes simple file reads, formatting changes, or quick lookups. If the task involves writing logic, reviewing logic, or making decisions about code, use Opus.
-
-For `/forge:write` and `/forge:publish`, Opus is also preferred. Long-form prose benefits from the stronger reasoning and consistency Opus provides.
