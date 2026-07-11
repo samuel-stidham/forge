@@ -1,11 +1,11 @@
 ---
 name: conventional-commits
-description: Commit message and PR title format for all commits forge commands create. The do-work and ship commands must follow this format when committing or writing PR descriptions.
+description: Commit message and PR title format for all commits forge commands create. Every command that commits or writes a PR title must follow this format.
 ---
 
 # Conventional Commits
 
-This skill defines the commit message format for commits forge commands generate. The `/forge:do-work` and `/forge:ship` commands must follow these rules when they create commits or PR descriptions.
+This skill defines the commit message format for commits forge commands generate. Every command that creates commits or PR descriptions must follow these rules.
 
 ## Subject line
 

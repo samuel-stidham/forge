@@ -9,7 +9,7 @@ You are taking the current branch's committed work and getting it into a draft P
 
 Additional context for the PR body, if any: $ARGUMENTS
 
-Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management.
 
 ## Pre-flight checks
 

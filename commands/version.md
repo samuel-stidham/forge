@@ -24,7 +24,7 @@ Determine the current version. Check these sources in this order, and use the fi
 
 ## Workflow
 
-Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management.
 
 1. Report the current version and the new version the requested bump will produce. Ask the user to confirm before proceeding. Do not tag without confirmation.
 2. Update `VERSION.md` with the new version string, as a single line.

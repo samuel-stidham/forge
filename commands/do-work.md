@@ -34,7 +34,7 @@ Do not move to implementation until you have shown the plan. If the user is acti
 
 ### 4. Create a branch
 
-Branch naming follows `{type}/{short-kebab-description}`. `type` is one of `feat`, `fix`, `chore`, `refactor`, `docs`, `test`, or `perf`, matched to the nature of the task. The description should be two to five words, lowercase, and hyphenated, drawn from the task itself. Avoid generic names. For example, use `fix/null-session-token-on-refresh`, not `fix/bug`.
+Branch naming follows `{type}/{short-kebab-description}`. `type` is one of the allowed commit types the `conventional-commits` skill defines, matched to the nature of the task. The description should be two to five words, lowercase, and hyphenated, drawn from the task itself. Avoid generic names. For example, use `fix/null-session-token-on-refresh`, not `fix/bug`.
 
 Check the current branch first. If there are uncommitted changes that are not yours to discard, stop. Ask the user how to proceed instead of branching over their work. Otherwise, create and check out the new branch from the up-to-date base branch.
 
@@ -42,11 +42,11 @@ Check the current branch first. If there are uncommitted changes that are not yo
 
 Write the real implementation. Do not leave placeholder stubs or `TODO` comments standing in for logic that was asked for. Follow the codebase's existing patterns and its dependency conventions. If the project follows Clean Architecture layering, respect it. See the `clean-architecture` skill in this plugin for the underlying rules if you need a refresher.
 
-Inside each layer, follow the `clean-code` skill in this plugin for code-level quality, covering magic values, cognitive complexity, naming, error handling, and the like. The `clean-architecture` skill covers the layers; the `clean-code` skill covers what happens inside them.
+Inside each layer, follow the `clean-code` skill in this plugin for code-level quality, covering magic values, cognitive complexity, naming, error handling, and the like. The `clean-architecture` skill covers the layers. The `clean-code` skill covers what happens inside them.
 
 Commit as you go. Follow the `conventional-commits` skill in this plugin for the subject, body, and footer format. Keep commits small and logically scoped, instead of one giant commit at the end.
 
-Follow the `token-budget` skill in this plugin for session management. Work in small batches, commit after each logical step, and stop gracefully with a resume path if token limits are reached. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management. Work in small batches, commit after each logical step, and stop gracefully with a resume path if token limits are reached.
 
 ### 6. Test and lint
 

@@ -89,7 +89,7 @@ The test plan is a starting point. The user or Claude can extend it as bugs are 
 
 ## Workflow
 
-Follow the `token-budget` skill in this plugin for session management. This command generates a full module and will make many tool calls; commit after each logical step and check in with the user before large batches. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management. This command generates a full module and will make many tool calls. Commit after each logical step and check in with the user before large batches.
 
 1. State what you found during orientation. List the public API surface you plan to wrap. List the tool categories and specific tools you will generate. Keep this brief.
 2. Create the MCP server module with all tools.

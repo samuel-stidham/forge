@@ -1,6 +1,6 @@
 ---
 description: Compile a writing project into publishable ebook formats, such as EPUB for Amazon KDP and Barnes and Noble Nook. Builds local files only and does not upload.
-argument-hint: "[optional target format or platform, e.g. \"kindle\", \"nook\", or \"epub\"]"
+argument-hint: "[optional target format or platform, e.g. \"kindle\", \"nook\", or \"epub\"] [--work|--creative|--type-{name}]"
 ---
 
 # /forge:publish
@@ -11,7 +11,7 @@ You are compiling a writing project in this repo into publishable ebook formats.
 
 The requested format or platform is: $ARGUMENTS
 
-If `$ARGUMENTS` is empty, generate all supported formats.
+Strip and record any `writing-style` context flags, such as `--work` or `--type-poetry`, before reading the format. If nothing remains after stripping, generate all supported formats.
 
 ## Orientation
 
@@ -30,7 +30,7 @@ Before building anything, read the repo to understand the manuscript structure.
 
 ## Workflow
 
-Follow the `token-budget` skill in this plugin for session management. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management. When assembly requires writing or adjusting manuscript text, follow the `writing-style` skill, honoring any context flags found in `$ARGUMENTS`.
 
 1. Read the manuscript files in order. Assemble them into a single logical document, following the chapter ordering found during orientation.
 2. Apply basic typographic formatting. This includes chapter headings, paragraph spacing, and italics and bold preserved from the markdown source. It also includes proper front and back matter placement.

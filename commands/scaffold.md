@@ -40,12 +40,8 @@ Generate the minimum infrastructure the project actually needs. Always wire the 
 
 Include all of the following, regardless of language or type.
 
-1. **Layered structure**, following the `clean-architecture` skill:
-   - `domain/`: entities and business rules, with zero external dependencies.
-   - `application/`: use cases and ports, meaning interfaces, that the use cases need. No framework or infrastructure imports.
-   - `infrastructure/`: concrete adapters that implement application ports, such as a database, a message queue, or an HTTP client.
-   - `presentation/`, or `cmd/`/`interfaces/` if more idiomatic for the language: the entry point that wires everything together as the composition root. It exposes the project type's interface, such as HTTP handlers, CLI commands, or a consumer loop.
-   - Use whatever directory names are idiomatic for the language's ecosystem, while keeping these four responsibilities. Do not force a Go-style layout onto a Rails or Rails-adjacent project if it fights the framework.
+1. **Layered structure**, following the `clean-architecture` skill. It defines each layer's responsibilities, the dependency direction, and the naming conventions. Do not restate them here.
+   - Use whatever directory names are idiomatic for the language's ecosystem, while keeping the four responsibilities the skill defines. Do not force a Go-style layout onto a Rails or Rails-adjacent project if it fights the framework.
    - For the `web-app` type, follow the framework's own layout instead of the four-layer split. Keep business logic out of controllers and templates. Do not invent a `domain/` or `application/` tree the framework does not expect.
 2. **Dockerfile**: a multi-stage build. The final stage runs as a non-root user and only ships the runtime artifact. Keep the build toolchain out of the final image.
 3. **docker-compose.yml**: runs the service plus any dependency it actually needs, such as a database or queue for a `rest-api` or `background-worker`. Use sane defaults and no hardcoded secrets.
@@ -60,7 +56,7 @@ Include all of the following, regardless of language or type.
 
 ## Process
 
-Follow the `token-budget` skill in this plugin for session management. `/forge:scaffold` generates many files and will exceed 30 tool calls for most project types; check in with the user after completing each major layer before moving to the next. Commit each layer as it is finished. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management. `/forge:scaffold` generates many files and will exceed 30 tool calls for most project types. Check in with the user after completing each major layer before moving to the next. These check-ins are the resume points, since this command does not commit.
 
 1. State the language, the project type, any flags used, and the file tree you are about to create. Keep this brief. It is not a full design document.
 2. Create the files for real. Write working code, working config, and working CI. Do not write stubs.

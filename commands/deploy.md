@@ -11,7 +11,7 @@ The optional target is: $ARGUMENTS
 
 When the target is empty, detect the default environment from the repo. Ask the user only if more than one environment exists and the choice is unclear.
 
-Follow the `infrastructure-as-code` skill in this plugin for every OpenTofu action. Follow the `token-budget` skill for session management. Default to Opus for this command.
+Follow the `infrastructure-as-code` skill in this plugin for every OpenTofu action. Follow the `token-budget` skill for session management.
 
 ## Detect, never assume
 
@@ -40,14 +40,7 @@ When the repo has a `Dockerfile` and a target registry, build the image and push
 
 ### 2. Apply infrastructure
 
-When an `infra/` directory exists, apply it with the discipline the `infrastructure-as-code` skill defines.
-
-1. Run `tofu init` if the working directory is not initialized.
-2. Run `tofu fmt` and `tofu validate`.
-3. Run `tofu plan` and show the full plan to the user.
-4. Apply only after the user reads the plan and confirms.
-
-Never run `tofu destroy`. Never auto-approve an apply that creates or replaces resources. Never print secret values from variables, outputs, or state.
+When an `infra/` directory exists, apply it with the plan-before-apply discipline the `infrastructure-as-code` skill defines. Run `tofu init` first if the working directory is not initialized. Never print secret values from variables, outputs, or state.
 
 ### 3. Run release steps
 

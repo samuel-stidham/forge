@@ -1,6 +1,6 @@
 ---
 description: Write long-form prose for a writing project in this repo, such as fiction, nonfiction, essays, or worldbuilding documents. Adapts to the project's existing voice and structure.
-argument-hint: "[chapter outline, scene description, section topic, or revision request]"
+argument-hint: "[chapter outline, scene description, section topic, or revision request] [--work|--creative|--type-{name}]"
 ---
 
 # /forge:write
@@ -11,7 +11,7 @@ The Git repo is the workspace, not the publishing destination. The final output 
 
 The task is: $ARGUMENTS
 
-If `$ARGUMENTS` is empty, ask the user what to write next before doing anything else.
+Strip any `writing-style` context flags before reading the task. If nothing remains after stripping, ask the user what to write next before doing anything else.
 
 ## Orientation
 
@@ -34,9 +34,9 @@ Create a branch following the same convention as `/forge:do-work`. Use `feat` fo
 
 ### 3. Write the content
 
-Write the content. Follow the `writing-style` skill in this plugin for the prose. Match the voice and conventions you found during orientation. Produce real, complete prose. Do not leave placeholder paragraphs or notes like "TODO: expand this section."
+Write the content. Follow the `writing-style` skill's context selection. It chooses creative for manuscript content unless a flag in `$ARGUMENTS` overrides it. Match the voice and conventions you found during orientation. Produce real, complete prose. Do not leave placeholder paragraphs or notes like "TODO: expand this section."
 
-Follow the `token-budget` skill in this plugin for session management. Complete one section or scene fully before starting the next. Stop gracefully with a resume path if token limits are reached. Default to Opus for this command.
+Follow the `token-budget` skill in this plugin for session management. Complete one section or scene fully before starting the next. Stop gracefully with a resume path if token limits are reached.
 
 ### 4. Commit
 

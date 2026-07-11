@@ -37,7 +37,7 @@ The real signals of high complexity are deep nesting and deep boolean expression
 Bad: `if score > 25000 && !game_over && wave > 3 && lives > 0`
 Good: `if is_eligible_for_bonus(state)`
 
-Length is a weak signal, so treat it as a prompt to look, not a limit to enforce. Extract a helper when its name lets the caller be understood **without reading the helper's body** — the name fully stands in for what it does. Do not extract just to make a function shorter. A linear 40-line process you read top to bottom can be clearer than eight tiny helpers you have to reassemble in your head.
+Length is a weak signal, so treat it as a prompt to look, not a limit to enforce. Extract a helper when its name lets the caller be understood **without reading the helper's body**. The name fully stands in for what it does. Do not extract just to make a function shorter. A linear 40-line process you read top to bottom can be clearer than eight tiny helpers you have to reassemble in your head.
 
 Fragmentation has its own cost. Shattering one coherent function into many small ones does not remove complexity if understanding a single operation now means hopping through ten functions scattered across a file. That is the same cognitive load wearing a different outfit. Split a function when the pieces are independently meaningful, not to hit a number.
 
