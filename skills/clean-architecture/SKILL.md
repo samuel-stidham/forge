@@ -66,7 +66,7 @@ A common mistake is over-abstracting the domain layer, for example giving every 
 
 - **Domain**: pure unit tests. No mocks or test doubles are needed. Construct objects, call methods, and assert on the results or the state. If a domain test needs a mock, that is a sign domain logic has taken on a dependency it should not have.
 - **Application**: unit tests with fake or mock implementations of the ports the use case depends on. Examples include an in-memory repository, a fake clock, or a spy notifier. Assert on the use case's behavior and its calls to ports, not on infrastructure details.
-- **Infrastructure**: integration tests against the real thing where practical, such as a real test database run through Docker, or a sandbox API. This layer's entire job is talking correctly to that external system. Mocking the thing infrastructure is supposed to integrate with defeats the purpose of testing it.
+- **Infrastructure**: integration tests against the real thing where practical. Examples include a real test database run through Docker, or a sandbox API. This layer's entire job is talking correctly to that external system. Mocking the thing infrastructure is supposed to integrate with defeats the purpose of testing it.
 - **Presentation**: integration or end-to-end tests that exercise the full request path. This means an HTTP request in and a response out, or a CLI invocation in and output out. Use real or test-double infrastructure, depending on the tradeoff between speed and cost.
 
 A healthy test suite is mostly fast domain and application unit tests. It has a smaller number of slower infrastructure and presentation integration tests covering the seams.

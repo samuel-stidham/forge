@@ -90,7 +90,7 @@ Add `--infra opentofu` to also generate cloud infrastructure as code. This adds 
 
 ### `/forge:deploy`
 
-`/forge:deploy` deploys a project using infrastructure that already exists in the repo. It is the verb that follows `/forge:scaffold --infra`. Scaffold writes the infrastructure, and deploy applies it. It detects what is there, an `infra/` OpenTofu directory, a Dockerfile, and the app's release steps, then deploys without assuming any cloud or pipeline.
+`/forge:deploy` deploys a project using infrastructure that already exists in the repo. It is the verb that follows `/forge:scaffold --infra`. Scaffold writes the infrastructure, and deploy applies it. It detects what is there, an `infra/` OpenTofu directory, a Dockerfile, and the app's release steps. It then deploys without assuming any cloud or pipeline.
 
 It follows the `infrastructure-as-code` skill's plan-before-apply discipline. It applies only after you read and confirm the plan, never destroys infrastructure, and never prints secret values. It builds and pushes the container image when the project ships one. It runs release steps like migrations only when the project defines them, then verifies and reports.
 
@@ -102,7 +102,7 @@ It follows the `infrastructure-as-code` skill's plan-before-apply discipline. It
 
 ### `/forge:test-harness`
 
-`/forge:test-harness` generates an MCP server for headless testing. It reads the project's domain and application layers, finds the public API surface, and exposes it as MCP tools Claude can call. With the harness connected, Claude can launch the application, send inputs, read state, and find bugs without manual QA. It generates lifecycle, action, inspection, and targeted testing tools, wires up an MCP entry in `.claude/settings.json`, and writes a `TEST_PLAN.md` checklist to follow.
+`/forge:test-harness` generates an MCP server for headless testing. It reads the project's domain and application layers, finds the public API surface, and exposes it as MCP tools Claude can call. With the harness connected, Claude can launch the application, send inputs, read state, and find bugs without manual QA. It generates lifecycle, action, inspection, and targeted testing tools. It also wires up an MCP entry in `.claude/settings.json`, and writes a `TEST_PLAN.md` checklist to follow.
 
 It produces the harness only. It does not run the QA pass. That is a separate task you start after the harness is connected.
 
@@ -167,7 +167,7 @@ This is a reference skill. It defines code-level quality rules that apply inside
 
 ### `infrastructure-as-code`
 
-This is a reference skill. It defines how forge writes and applies OpenTofu. It covers the `infra/` directory layout, modules named by role, provider abstraction across `aws`, `gcp`, and `digitalocean`, remote state, the plan-before-apply discipline, and secrets handling. `/forge:scaffold` uses it to generate the `infra/` directory, and `/forge:deploy` uses it to apply that infrastructure safely.
+This is a reference skill. It defines how forge writes and applies OpenTofu. It covers the `infra/` directory layout, modules named by role, provider abstraction across `aws`, `gcp`, and `digitalocean`. It also covers remote state, the plan-before-apply discipline, and secrets handling. `/forge:scaffold` uses it to generate the `infra/` directory, and `/forge:deploy` uses it to apply that infrastructure safely.
 
 ### `conventional-commits`
 

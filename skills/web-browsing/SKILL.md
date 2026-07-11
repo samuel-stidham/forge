@@ -46,5 +46,5 @@ When the CLI is installed but has neither Chrome nor a key:
 
 > This task read the web with WebFetch, which cannot render JavaScript. The
 > `browse` CLI is installed but has no browser to drive. Install Chrome for
-> free local mode, or create an API key at https://www.browserbase.com and
-> export it as `BROWSERBASE_API_KEY` for cloud mode.
+> free local mode. For cloud mode, create an API key at https://www.browserbase.com
+> and export it as `BROWSERBASE_API_KEY`.

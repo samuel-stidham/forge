@@ -42,7 +42,7 @@ Create a new module, crate, or package in the project. The location depends on t
 - TypeScript/Node: a new `mcp-server/` directory with its own `package.json`.
 - Python: a new `mcp_server/` package.
 
-If the project uses a language not listed here, follow that language's idiomatic layout for a standalone executable that lives alongside the project and depends on it.
+If the project uses a language not listed here, follow that language's idiomatic layout. Create a standalone executable that lives alongside the project and depends on it.
 
 The server uses stdio transport. It registers tools that map to the project's public API surface. The harness depends on the project. The project never depends on the harness.
 
@@ -54,7 +54,7 @@ Generate tools in these categories based on what the project exposes. Not every 
 
 **Action tools**: send inputs or trigger operations. For a game this is player input. For an API this is sending HTTP requests. For a worker this is pushing jobs onto the queue. Include a batch or sequence tool that lets Claude chain multiple actions in one call, to cut down on round trips.
 
-**Inspection tools**: read the current state. Return structured JSON that Claude can parse. Include both detailed state, such as full entity positions and all fields, and summary state, such as a grid rendered as text or a single status line. Keep the response format consistent across all inspection tools.
+**Inspection tools**: read the current state. Return structured JSON that Claude can parse. Include detailed state, such as full entity positions and all fields. Also include summary state, such as a grid rendered as text or a single status line. Keep the response format consistent across all inspection tools.
 
 **Targeted testing tools**: override state for edge case testing. Set a score to one below an achievement threshold. Place an entity at a specific position. Fill a buffer to near capacity. These are test-only tools. Mark them clearly as such. They exist to let Claude reach specific scenarios without playing through the entire happy path.
 

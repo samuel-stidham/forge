@@ -1,6 +1,6 @@
 # forge
 
-forge is a repo-agnostic engineering workflow plugin for Claude Code. It scaffolds Clean Architecture project templates, executes development tasks, writes long-form prose, compiles ebooks, cuts releases, reviews diffs, ships PRs, and deploys projects to the cloud. It is installed across every machine and repo Samuel works in. That includes Hudl repos, personal side projects, and writing projects alike. It must behave identically everywhere.
+forge is a repo-agnostic engineering workflow plugin for Claude Code. It scaffolds Clean Architecture project templates, executes development tasks, writes long-form prose, and compiles ebooks. It cuts releases, reviews diffs, ships PRs, and deploys projects to the cloud. It is installed across every machine and repo Samuel works in. That includes Hudl repos, personal side projects, and writing projects alike. It must behave identically everywhere.
 
 ## Working on forge itself
 

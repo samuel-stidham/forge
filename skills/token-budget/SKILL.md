@@ -19,7 +19,7 @@ Every command should prefer completing one small task fully over starting a larg
 
 ### Track your own usage
 
-Keep a rough mental count of how many tool calls, file reads, and file writes you have made in the current session. If you have made more than 30 tool calls in a single command invocation, pause and check in with the user before continuing. Large commands like `/forge:scaffold` may need more, but most tasks should complete well under that number.
+Keep a rough mental count of how many tool calls, file reads, and file writes you have made in the current session. Pause if you make more than 30 tool calls in a single command invocation. Check in with the user before continuing. Large commands like `/forge:scaffold` may need more, but most tasks should complete well under that number.
 
 ### Commit early and often
 
@@ -27,7 +27,7 @@ Never accumulate a large amount of uncommitted work. Commit after each logical s
 
 ### Stop gracefully when approaching limits
 
-If Claude Code warns about approaching rate limits or token usage, do not try to squeeze in one more operation. Stop immediately. Commit any uncommitted work. Write a brief status note explaining what was done and what remains. Format the status note so the user can pass it as the `$ARGUMENTS` to the same command in the next session to resume.
+If Claude Code warns about approaching rate limits or token usage, do not try to squeeze in one more operation. Stop immediately. Commit any uncommitted work. Write a brief status note explaining what was done and what remains. Format the status note to pass as the `$ARGUMENTS`. The user will use it in the next session to resume.
 
 ### Provide a resume path
 

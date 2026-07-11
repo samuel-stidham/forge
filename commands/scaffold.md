@@ -28,7 +28,7 @@ Before writing any code, use the `clean-architecture` skill bundled with this pl
 
 This flag is optional. Without it, generate no infrastructure code. The flag is opt-in.
 
-When the user passes `--infra opentofu`, follow the `infrastructure-as-code` skill bundled with this plugin. It is the source of truth for the `infra/` directory layout, the module set, provider abstraction, remote state, the plan-before-apply discipline, and secrets handling. Do not restate or improvise those rules here.
+When the user passes `--infra opentofu`, follow the `infrastructure-as-code` skill bundled with this plugin. It is the source of truth for the `infra/` directory layout, the module set, and provider abstraction. It also covers remote state, the plan-before-apply discipline, and secrets handling. Do not restate or improvise those rules here.
 
 `--provider` is required whenever `--infra` is used. Accept `aws`, `gcp`, or `digitalocean`. If the user names a different provider, ask them to pick one of these three instead of guessing.
 
