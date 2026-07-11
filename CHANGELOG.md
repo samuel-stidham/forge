@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.5.0
+
+Add a web-browsing skill, split writing-style into work and creative
+contexts, and move duplicated rules into their skills.
+
+### Added
+
+- `web-browsing` skill: makes the `browse` CLI the default browser for any
+  task that touches the web. Falls back to WebFetch with install guidance
+  when the CLI or a browser is unavailable.
+- Writing context flags: `--work`, `--creative`, and `--type-{name}` let
+  `/forge:write` and `/forge:publish` override the automatic context.
+- `AGENTS.md`: the repo's working instructions for agents outside
+  Claude Code.
+
+### Changed
+
+- `writing-style` now covers all forge output through a shared core plus
+  work and creative contexts. The creative context absorbs voice,
+  continuity, and pacing rules for manuscripts.
+- `token-budget` gained the frontmatter it needs to register as a skill.
+  It also dropped plan-specific token math and model-selection rules.
+- Commands now reference their skills instead of restating rules. This
+  covers branch types, layer definitions, and the OpenTofu apply
+  discipline.
+- The README and CLAUDE.md enforce the single-source-of-truth rule with
+  pattern statements instead of hand-maintained skill lists.
+
 ## v0.4.0
 
 Add a deploy command, an infrastructure-as-code skill, and a web-app scaffold type.
