@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.1
+
+Enforce the 22-word sentence limit across all instructions.
+
+### Changed
+
+- docs: enforce 22-word sentence limit across all instructions
+
 ## v0.5.0
 
 Add a web-browsing skill, split writing-style into work and creative
