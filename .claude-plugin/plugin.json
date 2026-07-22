@@ -2,7 +2,7 @@
   "name": "forge",
   "displayName": "Forge",
   "description": "A lean, repo-agnostic engineering workflow plugin. Scaffolds Clean Architecture projects, executes development tasks, reviews changes, ships PRs, and deploys with OpenTofu. Also writes long-form prose, compiles ebooks, and cuts releases.",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": {
     "name": "Samuel Stidham"
   },
