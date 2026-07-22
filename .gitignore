@@ -11,3 +11,6 @@ Thumbs.db
 
 # Claude
 .claude/
+
+# Machine-specific agent rules
+.agents/rules/antigravity-*

@@ -1,6 +1,6 @@
 ---
 name: infrastructure-as-code
-description: Reference for OpenTofu infrastructure conventions, including module layout, provider abstraction, remote state, plan-before-apply discipline, secrets handling, and the optional cache and search modules. Use when scaffolding cloud infrastructure or deploying with OpenTofu.
+description: Reference for OpenTofu infrastructure conventions. Covers module layout, provider abstraction, remote state, plan-before-apply discipline, secrets handling, and the optional cache and search modules. Use when scaffolding cloud infrastructure or deploying with OpenTofu.
 ---
 
 # Infrastructure as Code Reference

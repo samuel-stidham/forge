@@ -175,7 +175,7 @@ This is a reference skill. It defines the commit subject format, the allowed com
 
 ### `writing-style`
 
-This is a reference skill. It defines the writing rules for every piece of text forge produces, selected by context. The work context is the default. It covers development output, such as README content, PR descriptions, and commit messages. The creative context covers manuscript writing, such as prose and poetry, with voice, continuity, and pacing rules. Pass `--work` or a `--type-{name}` flag to `/forge:write` or `/forge:publish` when the automatic choice is not what you want. Both contexts share the mechanical rules that keep writing human.
+This is a reference skill. It defines the writing rules for every piece of text forge produces, selected by context. The work context is the default. It covers development output, such as README content, PR descriptions, and commit messages. The creative context covers manuscript writing, such as prose and poetry, with voice, continuity, and pacing rules. Pass `--work` or a `--type-{name}` flag to `/forge:write` or `/forge:publish` when the automatic choice is not what you want. Both contexts share the mechanical rules that keep writing human. They also share a list of machine-writing habits to avoid and a scan to run before delivering.
 
 ### `token-budget`
 
