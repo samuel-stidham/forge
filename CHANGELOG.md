@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.6.0
+
+Expand writing-style with a quoting exemption, a habits list, and a
+pre-delivery scan.
+
+### Added
+
+- `writing-style`: a quoting exemption. Tool output, stack traces, diffs,
+  and cited text are reproduced verbatim. They are never reworded to fit
+  the style rules.
+- `writing-style`: a "Habits to avoid" list covering the tells of
+  machine-written text. It applies in full to the work context. In the
+  creative context it yields to an established project voice or verse
+  form.
+- `writing-style`: a "Before delivering" scan for the mechanical rules.
+  It runs against the command's own output, not against files it read.
+- Work context rules for leading with the answer and matching the target
+  repo's spelling.
+- The creative context preserves a manuscript's regional spelling,
+  including British spelling. The work context rule does not reach it.
+
+### Changed
+
+- The em dash ban now names the en dash and the double hyphen as
+  equivalent forms. Number ranges and flag names are not dashes.
+- `infrastructure-as-code`: the skill description splits a 23-word
+  sentence in two. Every keyword is preserved, so matching is unchanged.
+- Headings scale to the artifact. Commit bodies, short PR descriptions,
+  and two-paragraph reports no longer take headings.
+- `CLAUDE.md` and `AGENTS.md` describe how forge is actually installed.
+  Claude Code reads a per-version marketplace cache, never the checkout,
+  so testing an edit means publishing it or installing from a local path.
+- `.gitignore` covers machine-specific agent rules under `.agents/rules/`.
+
 ## v0.5.1
 
 Enforce the 22-word sentence limit across all instructions.

@@ -4,13 +4,13 @@ forge is a repo-agnostic engineering workflow plugin for Claude Code. This file 
 
 ## Working on forge itself
 
-This repo *is* the plugin. There is no separate build step. Editing a file under `commands/` or `skills/` changes the plugin's behavior directly.
+This repo *is* the plugin. There is no separate build step and nothing to compile. Editing a file under `commands/` or `skills/` changes what the plugin does, once the edit reaches the copy Claude Code reads.
 
 ### Testing changes
 
 Claude Code reads plugin commands and skills from disk at session start, and again on plugin reload. The plugin runs only in Claude Code, so test changes there, even when editing from another agent. To test a change, follow these steps.
 
-1. If forge is installed locally, through a local path or `claude plugin add`, reload the plugin. This applies when it points at this checked-out repo. Restart the Claude Code session, or use whatever reload mechanism the current version exposes for plugin development. This makes sure the edited `.md` files are picked up.
+1. Get the edited files in front of Claude Code. This repo installs through the `forge-marketplace` entry, which points at the GitHub repo. Claude Code reads a per-version cache under `~/.claude/plugins/cache/`, never this checkout. Commit the change, bump the version so `claude plugin update` can see the release, and push. Then run `claude plugin update forge@forge-marketplace` and restart the session. For faster iteration, install forge from a local path pointing at this checkout. A session restart alone then picks up each edit, with no version bump or push.
 2. Invoke the changed command, `/forge:do-work`, `/forge:review`, `/forge:ship`, `/forge:scaffold`, `/forge:deploy`, `/forge:test-harness`, `/forge:write`, `/forge:publish`, or `/forge:version`, in a real or scratch repo. Check that the behavior matches the instructions in the file.
 3. For a skill under `skills/`, test it through the commands that reference it. Grep the command files for the skill's name to find them. For a skill no command references, test it by exercising the behavior its description covers. Confirm the skill's guidance is actually applied.
 
